@@ -18,7 +18,7 @@ spec:
       containers:
       - env:
         - name: mongo__connectionString
-          value: mongodb://{{ .Release.Name }}-form-file-upload-mongo:27017
+          value: mongodb://{{ .Release.Name }}-form-file-upload-mongo:27017/
         - name: mongo__database
           value: form-file-upload
         - name: s3__accessKey

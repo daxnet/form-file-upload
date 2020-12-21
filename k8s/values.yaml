@@ -1,4 +1,4 @@
-s3Endpoint: "rook-ceph-rgw-signals-store.rook-ceph.svc.cluster.local"
+s3Endpoint: "http://rook-ceph-rgw-signals-store.rook-ceph.svc.cluster.local"
 s3AccessKey: "3F9CEJCCL6XXZULDH9O8"
 s3SecretKey: "6TzJfCCae7UECd4IHSxKgAiXRKmwkoQJ2RJyBXAp"
 mongoStorageClassName: "rook-ceph-block"

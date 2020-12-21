@@ -9,6 +9,6 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 200Mi
+      storage: 20Gi
   storageClassName: {{ .Values.mongoStorageClassName }}
 status: {}

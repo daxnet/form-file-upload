@@ -10,6 +10,6 @@ spec:
     port: 27017
     targetPort: 27017
   selector:
-    io.kompose.service: mongo
+    io.kompose.service: {{ .Release.Name }}-form-file-upload-mongo
 status:
   loadBalancer: {}
