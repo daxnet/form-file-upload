@@ -17,7 +17,7 @@ spec:
         io.kompose.service: {{ .Release.Name }}-form-file-upload-mongo
     spec:
       containers:
-      - image: mongo
+      - image: mongo:3-xenial
         imagePullPolicy: ""
         name: mongo
         ports:
