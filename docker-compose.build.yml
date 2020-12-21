@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+    form-file-upload-service:
+        image: daxnet/form-file-upload
+        build:
+            context: .
+            dockerfile: FormFileUpload/Dockerfile

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: {{ .Release.Name }}-form-file-upload-service
+  name: {{ .Release.Name }}-form-file-upload-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{ .Release.Name }}-form-file-upload-service
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: {{ .Release.Name }}-form-file-upload-service
+    spec:
+      containers:
+      - env:
+        - name: mongo__connectionString
+          value: mongodb://{{ .Release.Name }}-form-file-upload-mongo:27017
+        - name: mongo__database
+          value: form-file-upload
+        - name: s3__accessKey
+          value: {{ .Values.s3AccessKey | quote }}
+        - name: s3__endpoint
+          value: {{ .Values.s3Endpoint | quote }}
+        - name: s3__secretKey
+          value: {{ .Values.s3SecretKey | quote }}
+        image: daxnet/form-file-upload
+        imagePullPolicy: ""
+        name: form-file-upload-service
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
