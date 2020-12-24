@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "S3Files";
+}
+@model IList<string>
+
+<h1>@ViewData["Title"]</h1>
+
+<ul>
+    @{
+        foreach (var name in Model)
+        {
+            <li>@name</li>
+        }
+    }
+</ul>

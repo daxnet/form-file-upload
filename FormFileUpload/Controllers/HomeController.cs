@@ -37,7 +37,7 @@ namespace FormFileUpload.Controllers
                 var fileTransUtility = new TransferUtility(_s3);
                 using var stream = model.File.OpenReadStream();
                 await fileTransUtility.UploadAsync(stream, "data", $"FormFileUpload/{fileName}");
-                await _dao.AddAsync<SavedFile>(new SavedFile
+                await _dao.AddAsync(new SavedFile
                 {
                     Timestamp = DateTime.UtcNow,
                     FileName = fileName
@@ -52,9 +52,10 @@ namespace FormFileUpload.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> S3List()
         {
-            return View();
+            var files = await _s3.GetAllObjectKeysAsync("data", "FormFileUpload", null);
+            return View(files);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
